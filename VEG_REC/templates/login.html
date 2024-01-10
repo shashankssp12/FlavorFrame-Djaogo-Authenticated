@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block BASE%}
+
+    <form class="col-4 mx-auto mt-5 card p-5 shadow-lg"  method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <h3>Login</h3>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="email" class="form-control" placeholder="Username" aria-describedby="emailHelp">
+              
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br>
+            <p>Don't have an account-<a href="/register/">Register</a></p>
+
+          
+      </form>
+      {%endblock%}

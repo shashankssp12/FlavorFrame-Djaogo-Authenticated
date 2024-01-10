@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block BASE %}
+    <h1>Shashank Shekhar Pandey</h1>
+    <h4>This suych a page</h4>
+    <hr>
+    <table class="container">
+        <tr>
+          <th>S.no</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Can vote</th>
+        </tr>
+        {% for peeps in people%}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{peeps.name}}</td>
+          <td>{{peeps.age}}</td>
+          <td {% if peeps.age >= 18 %} style="background-color: rgb(10, 231, 10)" {% else %} style="background-color:red;" {% endif %}>
+            {% if peeps.age >= 18 %}
+            yes
+            {% else %}
+            no
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <hr>
+      <a href="/contact/">Contact</a>
+      <a href="/about/">About</a>
+    <hr>
+    <div class="vegetableMarket">
+      <h2>Vegetable Status</h2>
+      {% if 'Potato' in vegetable %}
+      Yes==>Potato
+      {% elif 'Tomato' %}
+      Yes avaliable
+      {% elif 'Cucumber' %}
+      Yes avaliable
+      {% else %}
+      NO
+      {% endif %}
+    </div>
+    <hr>
+    <p>
+        <!-- value|truncatechars:7 -->
+        {{text|truncatechars:50}}
+    </p>
+    <hr>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat eligendi commodi quod quisquam. Dignissimos nulla doloremque, doloribus temporibus corporis magnam eaque deleniti magni suscipit. Maxime quos necessitatibus inventore facilis vero enim natus est, facere dicta voluptatibus sequi tenetur! Beatae quam ipsam accusamus laudantium?</p>
+{%endblock%}

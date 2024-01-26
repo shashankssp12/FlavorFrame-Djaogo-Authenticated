@@ -1,16 +1,30 @@
 {% extends 'base.html'%}
 {% block BASE%}
+  
+
 
     <form class="col-4 mx-auto mt-5 card p-5 shadow-lg"  method="post" enctype="multipart/form-data">
         {%csrf_token%}
         <h3>Login</h3>
+        
+            <!-- checks if any messages if yes then on redirect it shows messages -->
+            {% if messages %}
+            <div class="alert alert-primary" role="alert">
+            <ul class="messages">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+            </ul>
+            </div>
+            {% endif %}
+
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Username</label>
-              <input type="email" class="form-control" placeholder="Username" aria-describedby="emailHelp">
+              <input type="text" name="username" class="form-control" placeholder="Username">
               
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
+              <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
             </div>
             
             <button type="submit" class="btn btn-primary">Submit</button>

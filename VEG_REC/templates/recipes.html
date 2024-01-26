@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% block BASE %}
 
+<nav class="navbar bg-body-tertiary shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <form class="d-flex" role="search">
+      <a href="/logout/" class="btn btn-outline-primary" type="submit">
+        Logout
+        </a>
+        </form>
+  </div>
+</nav>
+
     <div class="container mt-5">
         <form class="col-6 mx-auto card p-3 shadow-lg"  method="post" enctype="multipart/form-data">
             {%csrf_token%}
@@ -19,7 +30,7 @@
                 <label class="form-label">Recipe Image</label>
                 <input type="file" name="Rimage" class="form-control">
               </div>
-            <button type="submit" class="btn btn-success">Add Recipe</button>
+            <button type="submit" id="submit" class="btn btn-success">Add Recipe</button>
           </form>
 
           <br>
@@ -28,7 +39,7 @@
             <label class="form-label">Search Recipe</label>
             <div class="mb-3 d-flex flex-row" >
               <input type="text" name="search" class="form-control" >
-              <button class="btn btn-primary ">Search</button>
+              <button id="search" class="btn btn-primary ">Search</button>
             </div>
           </form>
           </div>          

@@ -10,6 +10,9 @@ class Recipe(models.Model):
     Rname=models.CharField(max_length=120)
     description=models.TextField()
     Rimage=models.ImageField(upload_to="RecipeImages")
+    # new
+    Recipe_view_count= models.IntegerField(default=1)
+    
 
     #for better formatting in python shell 
     def __str__(self) -> str:

@@ -33,7 +33,8 @@ urlpatterns = [
     # path('page2/', page2, name='page2'),
     path('admin/', admin.site.urls),
     path('login/' ,login_page, name='login_page'),
-    path('register/' ,register , name='register')
+    path('register/' ,register , name='register'),
+    path('logout/' , logout_page , name='logout_page')
 
 ]
 

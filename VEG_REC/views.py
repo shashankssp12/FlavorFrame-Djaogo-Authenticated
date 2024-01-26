@@ -3,6 +3,9 @@ from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login , logout
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -10,7 +13,7 @@ from django.contrib import messages
 
 
 # ek template return karvani hai--> the first thing to be done
-
+# @login_required(login_url='/login/')
 def recipes(request):
     # Bringing Data from FrontEnd
     if request.method == 'POST': 
@@ -18,7 +21,7 @@ def recipes(request):
 
        Recipe_image = request.FILES.get('Rimage')
        Recipe_name=data.get('Rname')
-       Recipe_description= data.get('description')
+       Recipe_description= data.get('description')  
        print(Recipe_name)
        print(Recipe_description)
        print(Recipe_image)
@@ -66,7 +69,31 @@ def update(request, id):
     return render(request,'update_recipe.html',context)
 
 def login_page(request):
-    return render(request,'login.html')
+     if request.method == 'POST':
+         data= request.POST 
+         username = data.get('username')
+         password = data.get('password')
+         if not User.objects.filter(username= username).exists():
+             messages.error(request, 'No such Username exists')
+             return redirect('/login/')
+            #  authenticate checks if on this usename the same password is put: if yes -- then it returns the object at the registered username. else it returns null value
+         user= authenticate(username = username , password= password)
+         if user is None:
+             messages.error(request, 'Invalid Password') 
+             return redirect( '/login/')
+         else:
+             login(request,user)
+             return redirect('/recipes/')
+            #  maintains sessions and checks if the user has checked in within the time period and then it doesn't need to login again 
+     return render( request , 'login.html')
+
+def logout_page(request):
+    # logout removes the user session so the user needs to login again to enter the same page.
+    logout(request)
+    return redirect ('/login/')
+
+
+
 def register(request):
     if request.method == 'POST':
         data= request.POST
@@ -80,18 +107,13 @@ def register(request):
         if user.exists():
             messages.error(request, "Username already exists.")
             return redirect('/register/')
-           
-
         user= User.objects.create(
             first_name=first_name,
             last_name=last_name,
-            username=username,
-            # password=password #Not the optimal approach
-        )
+            username=username )
+         # password=password #Not the optimal approach
         #Optimal way to store passwords, also this gets set outside the object.
-        user.set_password(password)
+        user.set_password(password)#for encrypting the password
         user.save()
         messages.info(request, "Account created successfully.")
-
-
     return render(request, 'register.html')

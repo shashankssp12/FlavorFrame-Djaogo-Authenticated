@@ -1,0 +1,1 @@
+AttributeError: type object 'Recipe' has no attribute 'objects'

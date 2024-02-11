@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from django.conf import settings
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -24,11 +25,10 @@ SECRET_KEY = 'django-insecure--a%iz_exq4o7#($_w1d&*!kznv_fiojpe56xfds(^!^xzo9blt
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-settings.configure(
 
-DEBUG = True ,
+DEBUG = True 
 
-ALLOWED_HOSTS = [],
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -83,16 +83,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'RecipeData',
+        'USER': 'root',
+        'PASSWORD': 'shashank',
+        'HOST': 'localhost',  # or the address of your MySQL server
+        'PORT': '3306',  # the default MySQL port
     },
-    'test': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'testdb.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
         
     }
-}
 
 
 # Password validation

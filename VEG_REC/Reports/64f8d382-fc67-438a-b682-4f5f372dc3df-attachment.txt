@@ -1,0 +1,1 @@
+<class 'django.db.models.query.QuerySet'>

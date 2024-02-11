@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block BASE %}
+
+<nav class="navbar bg-body-tertiary shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+        <form class="d-flex" role="search">
+            <a href="/logout/" class="btn btn-outline-primary" type="submit">
+                Logout
+            </a>
+        </form>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <h2>Add Recipe</h2>
+        <hr>
+        <div class="mb-3">
+            <label class="form-label">Recipe Name</label>
+            <input type="text" name="Rname" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Recipe Description</label>
+            <textarea name="description" class="form-control" required
+                placeholder="Write your recipe here..."></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Recipe Image</label>
+            <input type="file" name="Rimage" class="form-control">
+        </div>
+        <button type="submit" id="submit" class="btn btn-success">Add Recipe</button>
+    </form>
+
+    <br>
+    <div class="mt-4 col-8 mx-auto card p-2 shadow-lg">
+        <form action="">
+            <label class="form-label">Search Recipe</label>
+            <div class="mb-3 d-flex flex-row">
+                <input type="text" name="search" class="form-control">
+                <button id="search" class="btn btn-primary ">Search</button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Recipe Name</th>
+                <th scope="col">Recipe Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+
+            </tr>
+        </thead>
+        {% endblock %}

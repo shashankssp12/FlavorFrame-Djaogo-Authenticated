@@ -7,7 +7,7 @@
         {%csrf_token%}
         <h3>Login</h3>
         
-            <!-- checks if any messages if yes then on redirect it shows messages -->
+            <!-- checks if any messages is yes then on redirect it shows messages -->
             {% if messages %}
             <div class="alert alert-primary" role="alert">
             <ul class="messages">
@@ -27,7 +27,7 @@
               <input type="password" name="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
             </div>
             
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             <br>
             <p>Don't have an account-<a href="/register/">Register</a></p>
 

@@ -22,9 +22,9 @@ def recipes(request):
        Recipe_image = request.FILES.get('Rimage')
        Recipe_name=data.get('Rname')
        Recipe_description= data.get('description')  
-       print(Recipe_name)
-       print(Recipe_description)
-       print(Recipe_image)
+    #    print(Recipe_name)
+    #    print(Recipe_description)
+    #    print(Recipe_image)
        
        Recipe.objects.create(
            Rname=Recipe_name,
@@ -36,7 +36,7 @@ def recipes(request):
 
     if request.GET.get('search'):
         queryset=queryset.filter(Rname__icontains = request.GET.get('search'))
-        print( request.GET.get('search'))
+        # print( request.GET.get('search'))
 
 
     context={'page':'Recipes','Recipes':queryset}

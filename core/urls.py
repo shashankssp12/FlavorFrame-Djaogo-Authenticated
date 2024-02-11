@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from home.views import *
 from VEG_REC.views import *
+from Student.views import * 
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -34,7 +35,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/' ,login_page, name='login_page'),
     path('register/' ,register , name='register'),
-    path('logout/' , logout_page , name='logout_page')
+    path('logout/' , logout_page , name='logout_page'),
+    path('student/', stdRegister, name="stdRegister")
 
 ]
 

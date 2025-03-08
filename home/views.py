@@ -39,6 +39,3 @@ def about(request):
     return render(request, 'about.html',context)
 
 
-# def page2(request):
-#     print('*' * 10)#this will be printed in terminal
-#     return HttpResponse("hello,this is page2")

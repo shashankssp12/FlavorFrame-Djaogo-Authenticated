@@ -68,6 +68,7 @@ class Recipe1:
         self.name= name
         self.description = description
         self.image= image
+        
 class testRecipe(LiveServerTestCase):
     # testCase ----isOptimal---no
     #liveServerTestCase and TransactinTestCase ---- will automatically rollback the database without teardown function
@@ -107,7 +108,7 @@ class testRecipe(LiveServerTestCase):
 
         super().tearDown()
         self.selenium.quit()
-
+ 
     def testCreateRecipe(self):
         selenium = self.selenium
         selenium.get('http://127.0.0.1:8000/recipes')

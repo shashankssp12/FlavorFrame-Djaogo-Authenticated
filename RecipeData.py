@@ -1,6 +1,6 @@
 import os
 
-
+ 
 recipe_names = [
     "Pasta with Creamy Tomato Sauce",
     "Pan-Seared Salmon with Lemon Herb Butter",

@@ -27,7 +27,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', home , name='home'),
     path('delete-recipe/<id>/',delete , name='delete'),#Dynamic urls
-    path('update-recipe/<id>/',update , name='update'),
+    path('update-recipe/<id>/',update , name='update'),#Dynamic urls
     path('recipes/',recipes,name='recipes'),
     path('about/',about , name='about'),
     path('contact/',contact, name='contact'),

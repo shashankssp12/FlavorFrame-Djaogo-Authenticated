@@ -21,6 +21,7 @@ def recipes(request):
 
        Recipe_image = request.FILES.get('Rimage')
        Recipe_name=data.get('Rname')
+       
        Recipe_description= data.get('description')  
     #    print(Recipe_name)
     #    print(Recipe_description)

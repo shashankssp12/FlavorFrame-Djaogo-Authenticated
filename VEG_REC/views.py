@@ -7,34 +7,26 @@ from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.decorators import login_required
 
 
-
-
-# Create your views here.
-
-
-# ek template return karvani hai--> the first thing to be done
 # @login_required(login_url='/login/')
 def recipes(request):
     # Bringing Data from FrontEnd
     if request.method == 'POST': 
        data=request.POST
-
        Recipe_image = request.FILES.get('Rimage')
        Recipe_name=data.get('Rname')
-       
        Recipe_description= data.get('description')  
     #    print(Recipe_name)
     #    print(Recipe_description)
     #    print(Recipe_image)
        
-       Recipe.objects.create(
+       Recipe.objects.create(  # Creating new recipe in DB
            Rname=Recipe_name,
            description=Recipe_description,
            Rimage=Recipe_image,
        )
        return redirect('/recipes/')#to deal with reload alert problem.(after submission the page url must redirect to the same url)
+   
     queryset=Recipe.objects.all()
-
     if request.GET.get('search'):
         queryset=queryset.filter(Rname__icontains = request.GET.get('search'))
         # print( request.GET.get('search'))
@@ -47,7 +39,6 @@ def delete(request, id):
     queryset=Recipe.objects.get(id = id)
     queryset.delete()
     return redirect('/recipes/')
-    # return HttpResponse("a")
 
 def update(request, id):
     queryset=Recipe.objects.get(id = id)

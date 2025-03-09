@@ -1,7 +1,7 @@
 """
 URL configuration for core project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The `urlpatterns` list routes URLs to views. For more information:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
 Examples:
 Function views
@@ -16,35 +16,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home.views import *
-from VEG_REC.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from home.views import *
+from VEG_REC.views import *
+
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     # -----------------HOME (default)-----------------
     path('', home , name='home'),
     path('about/',about , name='about'),
     path('contact/',contact, name='contact'),
     
     # -----------------VEG_REC-----------------
-    path('delete-recipe/<id>/',delete , name='delete'),#Dynamic urls
-    path('update-recipe/<id>/',update , name='update'),#Dynamic urls
-    path('recipes/',recipes,name='recipes'),
-    # path('page2/', page2, name='page2'),
-    path('admin/', admin.site.urls),
-    path('login/' ,login_page, name='login_page'),
     path('register/' ,register , name='register'),
+    path('login/' ,login_page, name='login_page'),
     path('logout/' , logout_page , name='logout_page'),
-    
-
+    path('recipes/',recipes,name='recipes'),
+    path('update-recipe/<id>/',update , name='update'),#Dynamic urls
+    path('delete-recipe/<id>/',delete , name='delete'),#Dynamic urls
 ]
 
+#  Serves media files (like uploaded images) only in development mode (DEBUG=True).
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)
-
 
 urlpatterns += staticfiles_urlpatterns()

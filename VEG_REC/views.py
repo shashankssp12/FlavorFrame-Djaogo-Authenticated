@@ -93,8 +93,6 @@ def logout_page(request):
     logout(request)
     return redirect ('/login/')
 
-
-
 def register(request):
     if request.method == 'POST':
         data= request.POST

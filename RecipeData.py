@@ -18,8 +18,8 @@ recipe_descriptions = [
 recipe_images=[]
         # r is used for identifying RAW string--Does not ignore backlashes
 
-for i in range(1,6):
-    imgPathConst = os.path.abspath(os.path.join(os.path.dirname(__file__),'./public/static/RecipeImages',f"d{i}.jpg"))
+for i in range(1,3):
+    imgPathConst = os.path.abspath(os.path.join(os.path.dirname(__file__),'./media/RecipeImages',f"d{i}.jpg"))
     recipe_images.append(imgPathConst)
 
     # os.path.dirname(__file__): This gets the directory path of the current script file.
@@ -40,4 +40,4 @@ if __name__== "__main__":
      RecipeImage()
      
 # this conditional block executes only when the current script is run as the main program
-    #  in python every script and module has a built-in variable named _ _name_ _ 
+#  in python every script and module has a built-in variable named _ _name_ _ 

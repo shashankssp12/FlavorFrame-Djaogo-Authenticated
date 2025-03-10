@@ -21,7 +21,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from home.views import *
-from VEG_REC.views import *
+from FlavorFrame.views import *
 
 
 urlpatterns = [
@@ -31,7 +31,7 @@ urlpatterns = [
     path('about/',about , name='about'),
     path('contact/',contact, name='contact'),
     
-    # -----------------VEG_REC-----------------
+    # -----------------FLAVORFRAME-----------------
     path('register/' ,register , name='register'),
     path('login/' ,login_page, name='login_page'),
     path('logout/' , logout_page , name='logout_page'),

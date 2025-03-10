@@ -1,16 +1,17 @@
 import os
 from pathlib import Path
 from django.conf import settings
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+# DEBUG = os.getenv("DEBUG", "False").lower() in ["true", "1"]
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--a%iz_exq4o7#($_w1d&*!kznv_fiojpe56xfds(^!^xzo9blt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -32,7 +33,7 @@ INSTALLED_APPS = [
 ]
 EXTERNAL_APPS = [
     'home',
-    'VEG_REC'
+    'FlavorFrame',
 ]
 INSTALLED_APPS += EXTERNAL_APPS 
 
@@ -69,11 +70,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'RecipeData',
-        'USER': 'root',
-        'PASSWORD': 'shashank',
-        'HOST': 'localhost',  # or the address of your MySQL server
-        'PORT': '3306',  # the default MySQL port
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     },
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
